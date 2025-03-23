@@ -2,16 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knew you would say yes!</title>
-    <link rel="stylesheet" href="./yes_style.css">
+    <title>Yay!</title>
+    <link rel="stylesheet" href="yes_style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffe6f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        h1 {
+            color: #e60073;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        p {
+            color: #cc0066;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            transform: rotate(45deg);
+            animation: float 6s linear infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                bottom: -10%;
+                left: calc(100% * var(--random));
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                bottom: 110%;
+                left: calc(100% * var(--random) + 20px);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="header_text">Knew you would say yes!</h1>
-        <div class="gif_container">
-            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif">
-        </div>
-    </div>
+    <h1>Yayyy, Reeya! 🥰</h1>
+    <p>You're coming to India! Can't wait to see you! 💕</p>
+
+    <!-- Floating hearts -->
+    <script>
+        for (let i = 0; i < 30; i++) {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.style.setProperty('--random', Math.random());
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.animationDuration = `${4 + Math.random() * 3}s`;
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
+        }
+    </script>
 </body>
 </html>
+
